@@ -47,3 +47,6 @@ Ett JavaScript ramverk för att bygga webbsidor.
 - Vad är npm?
 - Vad är JSX?
 - Vad är en komponent?
+- Vad kallas "egna attributer" i komponenter?
+- Vad är states till för?
+- Vad är ett fragment?
