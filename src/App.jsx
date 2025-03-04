@@ -8,10 +8,12 @@ import { HTMLPage } from './w3schools/pages/HTMLPage'
 
 /*
 
+Vanlig struktur att använda för React komponenter:
 1. Home, About Us, Contact Us, Product, Featured, Cart
 2. Header, Nav, Sidebar, Main, Footer, Modal, Popup
 3. Button, Headings, Links, Dropdowns
 
+Exempel med W3Schools webbsida:
 HTML page
   Nav header
     Icon
@@ -47,6 +49,8 @@ function Counter() {
   const handleClick = (event) => {
     event.stopPropagation();
     event.preventDefault();
+
+    // Öka counter genom state funktion
     let newCounter = counter + 1;
     setCounter(newCounter);
     console.log(newCounter);
@@ -72,6 +76,8 @@ function Counter() {
   </>;
 }
 
+// Visas upp för varje todo som skapas
+// Funktioner för att radera och uppdatera todos skickas med
 function TodoItem({ todo, removeTodo, updateTodo }) {
   return <>
     <span>{todo.title}</span>
@@ -81,6 +87,7 @@ function TodoItem({ todo, removeTodo, updateTodo }) {
 }
 
 function TodoApp() {
+  // Håller koll på de todos som skapas 
   const [todos, setTodos] = useState([]);
   const [createTodoTitle, setCreateTodoTitle] = useState("");
 
@@ -96,15 +103,18 @@ function TodoApp() {
     };
   }, []);
 
+  // Lägg till element i arrayer med states genom spread operatorn
   const createTodo = () => {
     setTodos([{ title: createTodoTitle, completed: false }, ...todos]);
     setCreateTodoTitle("");
   };
 
+  // Radera element från arrayer med states genom .filter
   const removeTodo = (todo) => {
     setTodos(todos.filter(all => all !== todo));
   };
 
+  // Uppdatera element i arrayer med states genom .map
   const updateTodo = (todo) => {
     setTodos(todos.map(all => {
       if (all === todo) {
@@ -122,6 +132,7 @@ function TodoApp() {
     <input value={createTodoTitle} onChange={event => setCreateTodoTitle(event.target.value)} />
     <button onClick={createTodo}>Create Todo</button>
 
+    {/* Rita ut en TodoItem komponent för varje todo objekt */}
     <ul>
       {todos.map(todo => <li><TodoItem todo={todo} removeTodo={removeTodo} updateTodo={updateTodo} /></li>)}
     </ul>
@@ -153,6 +164,8 @@ function App() {
     email: "tony@stark.com"
   };
 
+  // Endast en parent kan finnas per JSX kod
+  // Använda fragments <> för att wrappa element, eller divs till exempel
   const example = <>
     <div></div>
     <span></span>
